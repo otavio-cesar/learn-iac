@@ -1,6 +1,6 @@
-resource "aws_security_group" "sg" {
-  name        = "allow_web_traffic"
-  description = "Allow web traffic"
+resource "aws_security_group" "acesso_geral" {
+  name        = var.grupo_seguranca
+  description = "Grupo de seguranca para acesso geral"
   ingress {
     cidr_blocks = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
