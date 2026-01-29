@@ -13,6 +13,7 @@ resource "aws_launch_template" "maquina" {
     Name = "Terraform Ansible Python"
   }
   security_group_names = [var.grupo_seguranca]
+  user_data = filebase64("ansible.sh")
 }
 # In case we want to create a instance using launch template
 # resource "aws_instance" "instancia_com_template"{

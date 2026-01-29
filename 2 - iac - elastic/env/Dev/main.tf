@@ -1,10 +1,10 @@
 module "aws_dev" {
-  instancia = "t2.micro"
+  instancia = "t3.micro"
   source   = "../../infra"
   regiao_aws = "us-east-1"
   chave    = "IaC-DEV2"
   grupo_seguranca = "grupo-seguranca-dev"
-  minimo = 0
-  maximo = 1
+  minimo = 1
+  maximo = 2
   nomeGrupo = "Dev-AutoScaling"
 }

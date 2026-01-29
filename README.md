@@ -1,6 +1,6 @@
 ## Comandos
 
-- ssh-keygenn
+- ssh-keygen
 
 - terraform output
 

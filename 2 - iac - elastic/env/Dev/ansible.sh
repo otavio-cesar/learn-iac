@@ -1,4 +1,14 @@
-- hosts: terraform-ansible
+#!/bin/bash
+cd /home/ubuntu
+sudo apt update
+sudo apt install -y python3.12-venv
+python3 -m venv /home/ubuntu/ansible
+. /home/ubuntu/ansible/bin/activate
+pip install --upgrade pip
+pip install ansible-core==2.13.13
+pip install --upgrade pip setuptools wheel
+tee -a playbook.yml > /dev/null <<EOT
+- hosts: localhost
   tasks:
     - name: Install Python3 and virtualenv
       apt:
@@ -47,3 +57,6 @@
       shell: ". /home/ubuntu/tcc/venv/bin/activate; python /home/ubuntu/tcc/manage.py loaddata clientes.json"
     - name: Iniciando servidor
       shell: ". /home/ubuntu/tcc/venv/bin/activate; nohup python /home/ubuntu/tcc/manage.py runserver 0.0.0.0:8000 &"
+
+EOT
+ansible-playbook playbook.yml
