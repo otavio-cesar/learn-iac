@@ -1,3 +1,7 @@
+# Intro
+
+Here is some scripts took during the lessons
+
 ## Comandos
 
 - ssh-keygen
@@ -32,4 +36,9 @@
 ### Conectar a máquina
 
     ssh -i "env/Dev/IaC-DEV" ubuntu@13.217.128.94
- 
+
+## Teste de Carga
+
+    pip install locust
+    
+    locust -f carga.py
