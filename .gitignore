@@ -42,3 +42,5 @@ terraform.rc
 # End of https://www.toptal.com/developers/gitignore/api/terraform
 
 2 - iac - elastic/env/Dev/IaC-DEV
+2 - iac - elastic/env/Dev/IaC-DEV2
+2 - iac - elastic/env/Dev/IaC-DEV2.pub

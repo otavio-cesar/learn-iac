@@ -10,3 +10,12 @@ variable "instancia" {
 variable "grupo_seguranca" {
   type = string
 }
+variable "nomeGrupo" {
+  type = string
+}
+variable "minimo" {
+  type = number
+}
+variable "maximo" {
+  type = number
+}
