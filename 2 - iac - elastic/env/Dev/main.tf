@@ -7,4 +7,5 @@ module "aws_dev" {
   minimo = 1
   maximo = 2
   nomeGrupo = "Dev-AutoScaling"
+  producao = true
 }

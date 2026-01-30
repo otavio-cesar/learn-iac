@@ -19,3 +19,6 @@ variable "minimo" {
 variable "maximo" {
   type = number
 }
+variable "producao" {
+  type = bool
+}

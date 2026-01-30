@@ -37,7 +37,28 @@ resource "aws_autoscaling_group" "grupo" {
     id      = aws_launch_template.maquina.id
     version = "$Latest"
   }
-  target_group_arns = [aws_lb_target_group.target-group.arn]
+  target_group_arns = [aws_lb_target_group.target-group[0].arn]
+}
+
+resource "aws_autoscaling_schedule" "liga" {
+  scheduled_action_name  = "liga"
+  min_size               = 1 # -1 means dont change these values at schedule time
+  max_size               = -1
+  desired_capacity       = -1
+  recurrence = "0 11 * * MON-FRI"
+  start_time             = timeadd(timestamp(), "10m")
+  autoscaling_group_name = aws_autoscaling_group.grupo.name
+}
+
+
+resource "aws_autoscaling_schedule" "desliga" {
+  scheduled_action_name  = "desliga"
+  min_size               = 0
+  max_size               = -1
+  desired_capacity       = 0
+  recurrence = "0 21 * * MON-FRI"
+  start_time             = timeadd(timestamp(), "11m")
+  autoscaling_group_name = aws_autoscaling_group.grupo.name
 }
 
 # Daqui para baixo vem a configuracao do autoscaling com o loadbalancer
@@ -52,6 +73,7 @@ resource "aws_default_subnet" "subnet_2" {
 resource "aws_lb" "load-balancer" {
   internal = false
   subnets  = [aws_default_subnet.subnet_1.id, aws_default_subnet.subnet_2.id]
+  count = var.producao ? 1 : 0
 }
 
 resource "aws_lb_target_group" "target-group" {
@@ -59,20 +81,22 @@ resource "aws_lb_target_group" "target-group" {
   port     = "8000"
   protocol = "HTTP"
   vpc_id   = aws_default_vpc.default.id
+  count = var.producao ? 1 : 0
 }
 
 resource "aws_default_vpc" "default" {
 
 }
 resource "aws_lb_listener" "lb-escutador" {
-  load_balancer_arn = aws_lb.load-balancer.arn
+  load_balancer_arn = aws_lb.load-balancer[0].arn
   port              = "8000"
   protocol          = "HTTP"
 
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.target-group.arn
+    target_group_arn = aws_lb_target_group.target-group[0].arn
   }
+  count = var.producao ? 1 : 0
 }
 
 resource "aws_autoscaling_policy" "autoscaling-policy-producao" {
@@ -83,7 +107,8 @@ resource "aws_autoscaling_policy" "autoscaling-policy-producao" {
     predefined_metric_specification {
       predefined_metric_type = "ASGAverageCPUUtilization"
     }
-    target_value = 20 # Meta de CPU
+    target_value = 50 # Meta de CPU
     disable_scale_in = false
   }
+  count = var.producao ? 1 : 0
 }
