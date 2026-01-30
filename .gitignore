@@ -46,3 +46,4 @@ terraform.rc
 2 - iac - elastic/env/Dev/IaC-DEV2.pub
 1 - iac - multiple environments/env/Prod/IaC-PROD
 __pycache__/carga.cpython-310.pyc
+2 - iac - autoscaling load balancer/env/Dev/IaC-DEV2
