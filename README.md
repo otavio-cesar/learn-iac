@@ -8,10 +8,15 @@ Here is some scripts took during the lessons
 
 - terraform output
 
+### Teste de Carga com Locust
+
+    pip install locust
+    
+    locust -f carga.py
+
 ## Rodar servidor dentro da instancia
 
     python ./tcc/manage.py runserver 0.0.0.0:8000
-
 
 ## 0 - iac - intro
 
@@ -33,12 +38,15 @@ Here is some scripts took during the lessons
  
     ansible-playbook env/Prod/playbook.yml -u ubuntu --private-key env/Prod/IaC-PROD -i infra/hosts.yml
 
+## 3 - iac - elastic beanstalk
+
 ### Conectar a máquina
 
-    ssh -i "env/Dev/IaC-DEV" ubuntu@13.217.128.94
-
-## Teste de Carga
-
-    pip install locust
+    docker build . -t producao:V1
     
-    locust -f carga.py
+    docker run -p 8000:8000 producao:V1
+
+### Repositorio api no github 
+
+    git clone git@github.com:otavio-cesar/clientes-leo-api.git
+
