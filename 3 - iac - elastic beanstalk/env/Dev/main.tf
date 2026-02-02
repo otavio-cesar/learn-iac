@@ -1,12 +1,11 @@
 module "aws_dev" {
-  # instancia = "t2.micro"
+  ambiente = "ambiente-dev"
+  descricao = "Ambiente de Desenvolvimento"
+  maquina = "t2.micro"
   source   = "../../infra"
   regiao_aws = "us-east-1"
   nome_repo_ecr = "repo-ecr-dev"
-  # chave    = "IaC-DEV2"
-  # grupo_seguranca = "grupo-seguranca-dev"
-  # minimo = 1
-  # maximo = 2
-  # nomeGrupo = "Dev-AutoScaling"
-  # producao = true
+  maximo = 2
+  nome = "desenvolvimento"
+  versao = "1.0.0"
 }

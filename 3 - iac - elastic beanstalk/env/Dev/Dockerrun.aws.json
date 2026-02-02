@@ -1,0 +1,12 @@
+{
+  "Image": {
+    "Name": "045444243386.dkr.ecr.us-east-1.amazonaws.com/repo-ecr-dev:V1"
+  },
+  "Ports": [
+    {
+      "ContainerPort": 8080,
+      "HostPort": 8000
+    }
+  ]
+}
+      

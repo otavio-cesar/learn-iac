@@ -8,6 +8,18 @@ Here is some scripts took during the lessons
 
 - terraform output
 
+### Aws - Firs Steps
+
+    aws sts get-caller-identity
+
+    aws configure
+
+    aws configure list
+
+    sudo apt install awscli
+
+    aws login --profile my-dev-profile
+
 ### Teste de Carga com Locust
 
     pip install locust
@@ -49,4 +61,14 @@ Here is some scripts took during the lessons
 ### Repositorio api no github 
 
     git clone git@github.com:otavio-cesar/clientes-leo-api.git
+
+### Configuring ECR
+
+    aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <account-id>.dkr.ecr.us-east-1.amazonaws.com
+
+    docker images
+
+    docker tag aa5c29b9d17d 045444243386.dkr.ecr.us-east-1.amazonaws.com/repo-ecr-dev:V1
+    
+    docker push 045444243386.dkr.ecr.us-east-1.amazonaws.com/repo-ecr-dev:V1
 

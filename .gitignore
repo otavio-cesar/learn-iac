@@ -47,3 +47,4 @@ terraform.rc
 1 - iac - multiple environments/env/Prod/IaC-PROD
 __pycache__/carga.cpython-310.pyc
 2 - iac - autoscaling load balancer/env/Dev/IaC-DEV2
+3 - iac - elastic beanstalk/env/Dev/.terraform.lock.hcl
