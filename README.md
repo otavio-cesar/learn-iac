@@ -10,13 +10,13 @@ Here is some scripts took during the lessons
 
 ### Aws - Firs Steps
 
-    aws sts get-caller-identity
+    sudo apt install awscli
 
     aws configure
 
-    aws configure list
+    aws sts get-caller-identity
 
-    sudo apt install awscli
+    aws configure list
 
     aws login --profile my-dev-profile
 
@@ -72,3 +72,15 @@ Here is some scripts took during the lessons
     
     docker push 045444243386.dkr.ecr.us-east-1.amazonaws.com/repo-ecr-dev:V1
 
+## Terraform 
+
+    terraform import \
+    module.aws_dev.aws_s3_bucket.beanstalk_deploys \
+    desenvolvimento-deploys-123321
+
+    terraform import \
+    module.aws_dev.aws_elastic_beanstalk_environment.ambiente_beanstalk \
+    ambiente-dev
+
+
+    aws elasticbeanstalk update-environment --ambiente-dev --version-label

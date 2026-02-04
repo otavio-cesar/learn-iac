@@ -4,7 +4,7 @@ resource "aws_elastic_beanstalk_application" "aplicacao-beanstalk" {
 }
 
 resource "aws_elastic_beanstalk_environment" "ambiente_beanstalk" {
-  name                = var.ambiente
+  name                = "${var.nome}-${var.ambiente}-${var.versao}"
   application         = aws_elastic_beanstalk_application.aplicacao-beanstalk.name
   solution_stack_name = "64bit Amazon Linux 2023 v4.9.2 running Docker"
 
@@ -34,7 +34,7 @@ resource "aws_elastic_beanstalk_application_version" "default" {
     aws_elastic_beanstalk_environment.ambiente_beanstalk,
     aws_s3_object.docker
   ]
-  name        = var.ambiente
+  name        = "${var.nome}-${var.ambiente}-${var.versao}"
   application = var.nome
   description = var.descricao
   bucket      = aws_s3_bucket.beanstalk_deploys.id

@@ -36,7 +36,7 @@ resource "aws_iam_role_policy" "beanstalk_ec2_policy" {
           "cloudwatch:PutMetricData",
           "ds:CreateComputer",
           "ds:DescribeDirectories",
-          "ec2:DescribeInstances",
+          "ec2:DescribeInstanceStatus",
           "logs:*",
           "ssm:*",
           "ec2messages:*",
@@ -49,6 +49,11 @@ resource "aws_iam_role_policy" "beanstalk_ec2_policy" {
           "ecr:DescribeImages",
           "ecr:BatchGetImage",
           "s3:*",
+          "iam:CreateServiceLinkedRole",
+          "ecr:GetAuthorizationToken",
+          "ecr:BatchCheckLayerAvailability",
+          "ecr:GetDownloadUrlForLayer",
+          "ecr:BatchGetImage"
         ]
         Effect   = "Allow"
         Resource = "*"
