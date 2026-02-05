@@ -37,6 +37,8 @@ resource "aws_iam_role_policy" "beanstalk_ec2_policy" {
           "ds:CreateComputer",
           "ds:DescribeDirectories",
           "ec2:DescribeInstanceStatus",
+          "ec2:DescribeImages",
+          "ec2:DescribeInstances",
           "logs:*",
           "ssm:*",
           "ec2messages:*",
@@ -49,11 +51,7 @@ resource "aws_iam_role_policy" "beanstalk_ec2_policy" {
           "ecr:DescribeImages",
           "ecr:BatchGetImage",
           "s3:*",
-          "iam:CreateServiceLinkedRole",
-          "ecr:GetAuthorizationToken",
-          "ecr:BatchCheckLayerAvailability",
-          "ecr:GetDownloadUrlForLayer",
-          "ecr:BatchGetImage"
+          "iam:CreateServiceLinkedRole"
         ]
         Effect   = "Allow"
         Resource = "*"
@@ -66,3 +64,14 @@ resource "aws_iam_instance_profile" "beanstalk_ec2_profile" {
   name = "beanstalk_ec2_profile"
   role = aws_iam_role.beanstalk_ec2.name
 }
+
+resource "aws_iam_role_policy_attachment" "ecr_readonly" {
+  role       = aws_iam_role.beanstalk_ec2.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+}
+
+resource "aws_iam_role_policy_attachment" "eb_web_tier" {
+  role       = aws_iam_role.beanstalk_ec2.name
+  policy_arn = "arn:aws:iam::aws:policy/AWSElasticBeanstalkWebTier"
+}
+

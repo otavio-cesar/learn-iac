@@ -1,12 +1,12 @@
 {
-  "AWSEBDockerrunVersion": 1,
+  "AWSEBDockerrunVersion": "1",
   "Image": {
-    "Name": "045444243386.dkr.ecr.us-east-1.amazonaws.com/repo-ecr-dev:V1",
+    "Name": "public.ecr.aws/n2a9h7x9/teste/otavio",
     "Update": "true"
   },
   "Ports": [
     {
-      "ContainerPort": 8080
+      "ContainerPort": "8000"
     }
   ]
 }

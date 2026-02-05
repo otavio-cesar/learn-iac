@@ -52,7 +52,9 @@ Here is some scripts took during the lessons
 
 ## 3 - iac - elastic beanstalk
 
-### Conectar a máquina
+    zip -r desenvolvimento.zip Dockerrun.aws.json
+
+### Criando imagem a partir do Dockerfile
 
     docker build . -t producao:V1
     
@@ -64,23 +66,43 @@ Here is some scripts took during the lessons
 
 ### Configuring ECR
 
-    aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <account-id>.dkr.ecr.us-east-1.amazonaws.com
-
     docker images
+
+#### Privado
+
+    aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 045444243386.dkr.ecr.us-east-1.amazonaws.com
+
+    docker push 045444243386.dkr.ecr.us-east-1.amazonaws.com/repo-ecr-dev:V1
 
     docker tag aa5c29b9d17d 045444243386.dkr.ecr.us-east-1.amazonaws.com/repo-ecr-dev:V1
     
-    docker push 045444243386.dkr.ecr.us-east-1.amazonaws.com/repo-ecr-dev:V1
+#### Publico 
+
+    aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/n2a9h7x9/teste/otavio
+
+    docker tag aa5c29b9d17d public.ecr.aws/n2a9h7x9/teste/otavio
+
+    docker push public.ecr.aws/n2a9h7x9/teste/otavio
 
 ## Terraform 
+Importar recurso:
 
     terraform import \
     module.aws_dev.aws_s3_bucket.beanstalk_deploys \
     desenvolvimento-deploys-123321
 
-    terraform import \
-    module.aws_dev.aws_elastic_beanstalk_environment.ambiente_beanstalk \
-    ambiente-dev
+    terraform import module.aws_dev.aws_elastic_beanstalk_environment.ambiente_beanstalk ambiente-dev
 
+Atualiza o ambiente:
 
-    aws elasticbeanstalk update-environment --ambiente-dev --version-label
+    aws elasticbeanstalk update-environment \
+    --environment-name clientes-api-ambiente-dev-v1 \
+    --version-label clientes-api-ambiente-dev-v1-3d973bc1-b08d-a22e-26d0-85e9cfb2082e
+
+Rodar para apagar imagens antes de excluir o repositorio:
+
+    aws ecr batch-delete-image --repository-name repo-ecr-dev --image-ids imageTag=latest
+
+# References
+
+- https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/single-container-docker-configuration.html

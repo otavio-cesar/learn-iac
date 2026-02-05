@@ -34,7 +34,7 @@ resource "aws_elastic_beanstalk_application_version" "default" {
     aws_elastic_beanstalk_environment.ambiente_beanstalk,
     aws_s3_object.docker
   ]
-  name        = "${var.nome}-${var.ambiente}-${var.versao}"
+  name        = "${var.nome}-${var.ambiente}-${var.versao}-${uuid()}"
   application = var.nome
   description = var.descricao
   bucket      = aws_s3_bucket.beanstalk_deploys.id
