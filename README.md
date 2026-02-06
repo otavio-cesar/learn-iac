@@ -72,17 +72,17 @@ Here is some scripts took during the lessons
 
     aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 045444243386.dkr.ecr.us-east-1.amazonaws.com
 
-    docker push 045444243386.dkr.ecr.us-east-1.amazonaws.com/repo-ecr-dev:V1
+    docker push 045444243386.dkr.ecr.us-east-1.amazonaws.com/ecs-repo:V1
 
-    docker tag aa5c29b9d17d 045444243386.dkr.ecr.us-east-1.amazonaws.com/repo-ecr-dev:V1
+    docker tag aa5c29b9d17d 045444243386.dkr.ecr.us-east-1.amazonaws.com/ecs-repo:V1
     
 #### Publico 
 
-    aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/n2a9h7x9/teste/otavio
+    aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/n2a9h7x9/ecs-repo
 
-    docker tag aa5c29b9d17d public.ecr.aws/n2a9h7x9/teste/otavio
+    docker tag aa5c29b9d17d public.ecr.aws/n2a9h7x9/ecs-repo
 
-    docker push public.ecr.aws/n2a9h7x9/teste/otavio
+    docker push public.ecr.aws/n2a9h7x9/ecs-repo
 
 ## Terraform 
 Importar recurso:
