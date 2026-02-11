@@ -13,9 +13,6 @@ variable "descricao" {
 variable "ambiente" {
   type = string
 }
-variable "maximo" {
-  type = number
-}
 variable "maquina" {
   type = string
 }

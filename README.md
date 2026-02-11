@@ -20,6 +20,8 @@ Here is some scripts took during the lessons
 
     aws login --profile my-dev-profile
 
+    aws ec2 describe-availability-zones --filters Name=zone-type,Values=availability-zone --region us-east-2 --query AvailabilityZones[].ZoneName
+
 ### Teste de Carga com Locust
 
     pip install locust

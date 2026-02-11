@@ -48,5 +48,5 @@ resource "aws_iam_role_policy" "cargo_policy" {
 
 resource "aws_iam_instance_profile" "perfil" {
   name = "${var.ambiente}_perfil"
-  role = aws_iam_role.beanstalk_ec2.name
+  role = aws_iam_role.cargo.name
 }

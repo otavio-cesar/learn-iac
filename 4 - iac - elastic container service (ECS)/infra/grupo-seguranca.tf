@@ -1,7 +1,7 @@
 resource "aws_security_group" "alb" {
   name        = "alb"
   description = "Aplicacao Load Balancer security group"
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = module.vpc.vpc_id
 }
 
 resource "aws_security_group_rule" "entrada_alb" {
@@ -26,7 +26,7 @@ resource "aws_security_group_rule" "saida_alb" {
 resource "aws_security_group" "privado" {
   name        = "privado ECS"
   description = "Security group privado"
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = module.vpc.vpc_id
 }
 
 resource "aws_security_group_rule" "entrada_privado" {
