@@ -13,3 +13,7 @@ module "aws_dev" {
 output "IP_alb" {
   value = module.aws_dev.IP
 }
+
+output "Repo-End" {
+  value = module.aws_dev.Repo-End
+}
