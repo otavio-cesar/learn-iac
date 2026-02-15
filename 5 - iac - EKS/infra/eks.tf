@@ -2,8 +2,8 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 21.0"
 
-  name               = "EKS-Django"
-  kubernetes_version = "1.33"
+  name               = var.cluster_name
+  kubernetes_version = "1.34"
 
   # endpoint_public_access  = true
   endpoint_private_access = true
@@ -23,9 +23,15 @@ module "eks" {
       ami_type       = "AL2023_x86_64_STANDARD"
       instance_types = [var.maquina]
       vpc_security_group_ids = [aws_security_group.ssh_cluster.id]
-      min_size     = 2
-      max_size     = 3
-      desired_size = 2
+      min_size     = 1
+      max_size     = 1
+      desired_size = 1
     }
   }
+}
+
+resource "aws_eks_addon" "eks_addon" {
+  cluster_name = module.eks.cluster_name
+  addon_version = "v1.18.0-eksbuild.1"
+  addon_name = "vpc-cni"
 }

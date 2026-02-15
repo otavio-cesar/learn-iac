@@ -10,3 +10,6 @@ variable "ambiente" {
 variable "maquina" {
   type = string
 }
+variable "cluster_name" {
+  type = string
+}
