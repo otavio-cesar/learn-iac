@@ -69,12 +69,12 @@ resource "kubernetes_service" "LoadBalancer" {
   }
 }
 
-data "kubernetes_service" "nomeDNS" {
-    metadata {
-      name = "load-balancer-django-api"
-    }
-}
+# data "kubernetes_service" "nomeDNS" {
+#     metadata {
+#       name = "load-balancer-django-api"
+#     }
+# }
 
-output "URL" {
-  value = data.kubernetes_service.nomeDNS.status
-}
+# output "URL" {
+#   value = data.kubernetes_service.nomeDNS.status
+# }

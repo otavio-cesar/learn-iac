@@ -90,6 +90,9 @@ Here is some scripts took during the lessons
 
     aws eks describe-addon-versions   --addon-name vpc-cni   --region us-east-1   --query "addons[].addonVersions[].addonVersion"   --output text
 
+    terraform state rm module.aws_dev.kubernetes_deployment_v1.Django_API-deployment
+
+
 ## Terraform 
 Importar recurso:
 
