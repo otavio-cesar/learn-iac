@@ -7,3 +7,4 @@ module "aws_dev" {
   nome_repo_ecr = "ecs-repo"
   cluster_name = "eksdev"
 }
+

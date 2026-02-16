@@ -48,3 +48,5 @@ terraform.rc
 __pycache__/carga.cpython-310.pyc
 2 - iac - autoscaling load balancer/env/Dev/IaC-DEV2
 **/.terraform.lock.hcl
+**/env/Dev/aws/*
+.gitignore

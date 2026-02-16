@@ -23,11 +23,11 @@ resource "aws_security_group_rule" "saida_ssh_cluster" {
   security_group_id = aws_security_group.ssh_cluster.id
 }
 
-resource "aws_security_group" "privado" {
-  name        = "privado ECS"
-  description = "Security group privado"
-  vpc_id      = module.vpc.vpc_id
-}
+# resource "aws_security_group" "privado" {
+#   name        = "privado ECS"
+#   description = "Security group privado"
+#   vpc_id      = module.vpc.vpc_id
+# }
 
 # resource "aws_security_group_rule" "entrada_privado" {
 #   type              = "ingress"
