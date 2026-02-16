@@ -34,4 +34,7 @@ resource "aws_eks_addon" "eks_addon" {
   cluster_name = module.eks.cluster_name
   addon_version = "v1.21.1-eksbuild.3"
   addon_name = "vpc-cni"
+
+  # resolve_conflicts_on_create = "OVERWRITE"
+  # resolve_conflicts_on_update = "OVERWRITE"
 }
