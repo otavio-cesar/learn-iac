@@ -86,6 +86,10 @@ Here is some scripts took during the lessons
 
     docker push public.ecr.aws/n2a9h7x9/ecs-repo
 
+## 4 - iac - EKS
+
+    aws eks describe-addon-versions   --addon-name vpc-cni   --region us-east-1   --query "addons[].addonVersions[].addonVersion"   --output text
+
 ## Terraform 
 Importar recurso:
 
@@ -107,4 +111,8 @@ Rodar para apagar imagens antes de excluir o repositorio:
 
 # References
 
-- https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/single-container-docker-configuration.html
+- https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/single-container-docker-configuration.html - Beanstalk container configuration
+
+- https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs#examples - TF Provider EKS
+
+- https://github.com/hashicorp/terraform-provider-kubernetes/blob/main/_examples/eks/kubernetes-config/main.tf - Exemplo configuracao provider Kubernets
