@@ -86,12 +86,19 @@ Here is some scripts took during the lessons
 
     docker push public.ecr.aws/n2a9h7x9/ecs-repo
 
-## 4 - iac - EKS
+## 5 - iac - EKS
 
     aws eks describe-addon-versions   --addon-name vpc-cni   --region us-east-1   --query "addons[].addonVersions[].addonVersion"   --output text
 
     terraform state rm module.aws_dev.kubernetes_deployment_v1.Django_API-deployment
 
+Configura o kubctl para conectar ao cluster eks dev
+
+    aws eks update-kubeconfig --region us-east-1 --name eksdev
+
+Delete pod
+
+    kubectl delete pod django-api-deployment-6bcb446d9-5ngcd -n default
 
 ## Terraform 
 Importar recurso:
@@ -119,3 +126,8 @@ Rodar para apagar imagens antes de excluir o repositorio:
 - https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs#examples - TF Provider EKS
 
 - https://github.com/hashicorp/terraform-provider-kubernetes/blob/main/_examples/eks/kubernetes-config/main.tf - Exemplo configuracao provider Kubernets
+
+# Duvidas
+
+- Como configurar sem o Kubernetes Auto Mode
+- Como acessar registros privados de imagens a partir do ECS (Configurar autenticação dos serviços - https://docs.aws.amazon.com/pt_br/elasticbeanstalk/latest/dg/docker-configuration.remote-repo.html)

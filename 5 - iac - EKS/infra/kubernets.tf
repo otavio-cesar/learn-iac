@@ -7,7 +7,7 @@ resource "kubernetes_deployment_v1" "Django_API-deployment" {
   }
 
   spec {
-    replicas = 1
+    replicas = 2
 
     selector {
       match_labels = {
@@ -38,28 +38,29 @@ resource "kubernetes_deployment_v1" "Django_API-deployment" {
             }
           }
 
-          liveness_probe {
-            http_get {
-              path = "/clientes"
-              port = 8000
-            }
+          # liveness_probe {
+          #   http_get {
+          #     path = "/clientes"
+          #     port = 8000
+          #   }
 
-            initial_delay_seconds = 10
-            period_seconds        = 3
-          }
+          #   initial_delay_seconds = 20
+          #   period_seconds        = 61
+          # }
         }
       }
     }
   }
 }
 
-resource "kubernetes_service" "LoadBalancer" {
+resource "kubernetes_service_v1" "LoadBalancer" {
   metadata {
     name = "load-balancer-django-api"
+
   }
   spec {
     selector = {
-      nome = "django"
+      test = "django-${var.ambiente}"
     }
     port {
       port = 8000

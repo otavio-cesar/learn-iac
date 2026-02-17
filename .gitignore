@@ -50,3 +50,4 @@ __pycache__/carga.cpython-310.pyc
 **/.terraform.lock.hcl
 **/env/Dev/aws/*
 .gitignore
+5 - iac - EKS/env/Dev/awscliv2.zip
