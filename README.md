@@ -88,17 +88,7 @@ Here is some scripts took during the lessons
 
 ## 5 - iac - EKS
 
-    aws eks describe-addon-versions   --addon-name vpc-cni   --region us-east-1   --query "addons[].addonVersions[].addonVersion"   --output text
-
-    terraform state rm module.aws_dev.kubernetes_deployment_v1.Django_API-deployment
-
-Configura o kubctl para conectar ao cluster eks dev
-
-    aws eks update-kubeconfig --region us-east-1 --name eksdev
-
-Delete pod
-
-    kubectl delete pod django-api-deployment-6bcb446d9-5ngcd -n default
+    Info dentro do README da propria pasta
 
 ## Terraform 
 Importar recurso:

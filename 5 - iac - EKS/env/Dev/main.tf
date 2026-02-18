@@ -8,6 +8,10 @@ module "aws_dev" {
   cluster_name = "eksdev"
 }
 
-output "endereco" {
-  value = module.aws_dev.URL
-}
+# output "endereco" {
+#   value = module.aws_dev.URL
+# }
+
+# output "cluster_cidr"{
+#     value = module.aws_dev.cluster_service_cidr
+# }
