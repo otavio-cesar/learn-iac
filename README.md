@@ -1,12 +1,23 @@
-# Intro
+# Learn IaC - Resumo
 
-Here is some scripts took during the lessons
+Repositório com scripts e exemplos usados nas aulas de IaC (Terraform, Ansible, Docker, ECS/EKS/Beanstalk). Objetivo: servir como referência prática rápida para criar, provisionar e testar infra em AWS.
 
-## Comandos
+## Pré-requisitos
+Terraform
+AWS CLI (configurado com aws configure)
+Ansible
+Docker
+Python 3 + pip (para Locust e apps Django)
 
-- ssh-keygen
+## Comandos úteis
 
-- terraform output
+ Gerar chave SSH:
+
+    ssh-keygen
+
+Consultar output no terraform:
+
+    terraform output
 
 ### Aws - Firs Steps
 
@@ -109,7 +120,7 @@ Rodar para apagar imagens antes de excluir o repositorio:
 
     aws ecr batch-delete-image --repository-name repo-ecr-dev --image-ids imageTag=latest
 
-# References
+# Referências
 
 - https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/single-container-docker-configuration.html - Beanstalk container configuration
 
@@ -117,7 +128,7 @@ Rodar para apagar imagens antes de excluir o repositorio:
 
 - https://github.com/hashicorp/terraform-provider-kubernetes/blob/main/_examples/eks/kubernetes-config/main.tf - Exemplo configuracao provider Kubernets
 
-# Duvidas
+# Dúvidas
 
 - Como configurar sem o Kubernetes Auto Mode
 - Como acessar registros privados de imagens a partir do ECS (Configurar autenticação dos serviços - https://docs.aws.amazon.com/pt_br/elasticbeanstalk/latest/dg/docker-configuration.remote-repo.html)
