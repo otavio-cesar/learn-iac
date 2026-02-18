@@ -46,3 +46,30 @@ Delete pod
     # Inside the debug pod:
     nslookup public.ecr.aws
     wget -O- --timeout=10 https://public.ecr.aws/v2/
+
+
+# Desafios enfrentados
+
+Problemas:
+- i/o timeout
+- Unauthorized
+- ExecCredential
+- RBAC
+- endpoint privado
+- Problema de subnet tagging
+- Problema de scheme internal
+- Problema de NAT / saída para ECR
+- Problema de selector
+
+Checks:
+- EKS funcionando
+- Security Groups ok
+- Pods rodando
+- Target Group healthy
+- LoadBalancer correto
+- Aplicação acessível externamente
+- Subnets públicas existem
+- Subnets corretamente tagueadas
+    - Subnets públicas têm "kubernetes.io/role/elb" = "1"   
+    - Privadas tem sua tag propria tambem
+- Service tem annotation internet-facing!!!
