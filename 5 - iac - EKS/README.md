@@ -73,3 +73,7 @@ Checks:
     - Subnets públicas têm "kubernetes.io/role/elb" = "1"   
     - Privadas tem sua tag propria tambem
 - Service tem annotation internet-facing!!!
+
+# Obs
+
+Precisa de usar o aws-cli versão 2.
