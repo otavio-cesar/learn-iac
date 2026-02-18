@@ -56,6 +56,9 @@ resource "kubernetes_deployment_v1" "Django_API-deployment" {
 resource "kubernetes_service_v1" "LoadBalancer" {
   metadata {
     name = "load-balancer-django-api"
+    annotations = {
+      "service.beta.kubernetes.io/aws-load-balancer-scheme" = "internet-facing"
+    }
 
   }
   spec {
@@ -70,12 +73,13 @@ resource "kubernetes_service_v1" "LoadBalancer" {
   }
 }
 
-# data "kubernetes_service" "nomeDNS" {
-#     metadata {
-#       name = "load-balancer-django-api"
-#     }
-# }
+data "kubernetes_service" "nomeDNS" {
+  depends_on = [ kubernetes_service_v1.LoadBalancer ]
+    metadata {
+      name = "load-balancer-django-api"
+    }
+}
 
-# output "URL" {
-#   value = data.kubernetes_service.nomeDNS.status
-# }
+output "URL" {
+  value = data.kubernetes_service.nomeDNS.status
+}

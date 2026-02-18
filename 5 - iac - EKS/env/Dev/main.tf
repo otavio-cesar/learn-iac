@@ -8,3 +8,6 @@ module "aws_dev" {
   cluster_name = "eksdev"
 }
 
+output "endereco" {
+  value = module.aws_dev.URL
+}
